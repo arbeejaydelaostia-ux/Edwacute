@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For You ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            background-color: #ffe6f0;
+        }
+
+        #gifContainer {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #questionText {
+            font-size: 36px;
+            color: #ff4d6d;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 28px;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 12px;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            position: absolute;
+        }
+
+        #celebrationText {
+            display: none;
+            font-size: 32px;
+            color: #ff4d6d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- GIF container -->
+<div id="gifContainer">
+    <!-- Start GIF (Dudu) -->
+    <div id="duduGif" class="tenor-gif-embed"
+         data-postid="26097141"
+         data-share-method="host"
+         data-aspect-ratio="1.15108"
+         data-width="100%" style="max-width:400px;"">
+    </div>
+</div>
+
+<!-- Question -->
+<div id="questionText">Edwa Cute?</div>
+
+<!-- Buttons -->
+<button id="yesBtn" onclick="yesClicked()">Yes</button>
+<button id="noBtn" onmouseover="moveNo()">No</button>
+
+
+<script>
+function yesClicked() {
+    const yesBtn = document.getElementById("yesBtn");
+    yesBtn.disabled = true; // ✅ Disable para isang beses lang
+
+    // Palitan GIF
+    const gifContainer = document.getElementById("gifContainer");
+    const duduGif = document.getElementById("duduGif");
+    if(duduGif) gifContainer.removeChild(duduGif);
+
+    const kissDiv = document.createElement("div");
+    kissDiv.className = "tenor-gif-embed";
+    kissDiv.setAttribute("data-postid", "13874597465072197683"); // Kiss GIF
+    kissDiv.setAttribute("data-share-method", "host");
+    kissDiv.setAttribute("data-aspect-ratio", "1.00855");
+    kissDiv.setAttribute("data-width", "100%");
+    kissDiv.style.maxWidth = "400px";
+    gifContainer.appendChild(kissDiv);
+
+    // Reload Tenor script para mag-load yung new GIF
+    const script = document.createElement("script");
+    script.src = "https://tenor.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Palitan text
+    document.getElementById("questionText").innerText = "YESSSS!!! SUPER CUTE!!!";
+
+    // Show celebration text
+    document.getElementById("celebrationText").style.display = "block";
+}
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    const x = Math.random() * (window.innerWidth - 150);
+    const y = Math.random() * (window.innerHeight - 100);
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+</script>
+
+<!-- TENOR SCRIPT -->
+<script async src="https://tenor.com/embed.js"></script>
+
+</body>
+</html>
